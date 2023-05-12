@@ -7,18 +7,21 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
+
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioRepository } from './usuario.repository';
 import { CreateUsuarioDto } from './dto/create-user-dto';
 import { LoginUsuarioDto } from './dto/login-dto';
 import { compare } from 'bcryptjs';
 import { CustomInterface } from './strategies/custom.interface';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class UsuarioService {
   constructor(
     @InjectRepository(UsuarioEntity)
     private readonly usuarioRepository: UsuarioRepository,
+    private readonly jwtService: JwtService,
   ) {}
 
   async getall(): Promise<UsuarioEntity[]> {
@@ -63,5 +66,7 @@ export class UsuarioService {
       nombreUsuario: usuario.nombreUsuario,
       email: usuario.email,
     };
+    const token = await this.jwtService.sign(payload);
+    return { token };
   }
 }

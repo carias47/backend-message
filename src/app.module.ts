@@ -13,6 +13,7 @@ import {
   DB_PORT,
   DB_USER,
 } from './config/constants';
+import { MensajeModule } from './mensaje/mensaje.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import {
       }),
       inject: [ConfigService],
     }),
+    MensajeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
