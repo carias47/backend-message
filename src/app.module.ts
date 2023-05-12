@@ -21,6 +21,7 @@ import {
       isGlobal: true,
     }),
 
+    UsuarioModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
