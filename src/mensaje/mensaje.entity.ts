@@ -11,6 +11,6 @@ export class MensajeEntity {
   @Column({ type: 'varchar', length: 750, nullable: false })
   descripcion: string;
 
-  @Column({ type: 'timestamp', nullable: false })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   fechaCreate?: Date;
 }
