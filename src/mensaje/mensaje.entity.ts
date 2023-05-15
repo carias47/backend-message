@@ -5,7 +5,7 @@ export class MensajeEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: 'varchar', length: 50, nullable: false, unique: true })
+  @Column({ type: 'varchar', length: 80, nullable: false, unique: true })
   titulo: string;
 
   @Column({ type: 'varchar', length: 750, nullable: false })
