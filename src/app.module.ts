@@ -22,7 +22,6 @@ import { MensajeModule } from './mensaje/mensaje.module';
       isGlobal: true,
     }),
 
-    UsuarioModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -37,7 +36,6 @@ import { MensajeModule } from './mensaje/mensaje.module';
       }),
       inject: [ConfigService],
     }),
-    MensajeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
